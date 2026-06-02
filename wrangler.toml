@@ -1,0 +1,32 @@
+# ============================================================
+# معهد المستقبل التعليمي - Cloudflare Worker Configuration
+# ============================================================
+
+name = "institute-app"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ============================================================
+# ربط قاعدة بيانات D1 (SQLite)
+# ============================================================
+[[d1_databases]]
+binding = "DB"
+database_name = "institute-db"
+database_id = "YOUR_DATABASE_ID_HERE"
+# ← استبدل YOUR_DATABASE_ID_HERE بمعرّف قاعدة البيانات الفعلي
+
+# ============================================================
+# ربط تخزين R2 (للصور والملفات)
+# ============================================================
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "institute-assets"
+# ← ستحتاج لإنشاء دلو R2 اسمه "institute-assets"
+
+# ============================================================
+# متغيرات البيئة (Environment Variables)
+# ============================================================
+[vars]
+ADMIN_SECRET = "admin123"
+JWT_SECRET = "your-jwt-secret-change-this-in-production"
